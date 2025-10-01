@@ -32,3 +32,10 @@ Direktverkauf, Abonnements, Werbung
 
 **10. Relevanz / Einsatzbereich:**  
 Handel, Konsumgüter, Lifestyle, digitale Produkte  
+
+---
+
+## Verknüpfungen
+- **Zielgruppen:** [Endkund:innen](../zielgruppen/endkundinnen.md)
+- **Vertriebswege:** [Onlineshop](../vertriebswege/onlineshop.md), [Social Commerce](../vertriebswege/social-commerce.md), [Mobile Apps](../vertriebswege/mobile-apps.md), [Stationärer Handel](../vertriebswege/stationaer.md)
+- **Erlösmodelle:** [Direktverkauf](../erloesmodelle/direktverkauf.md), [Abonnement](../erloesmodelle/abonnement.md), [Werbung](../erloesmodelle/werbung.md), [Cross-Selling & Upselling](../erloesmodelle/cross-selling.md)

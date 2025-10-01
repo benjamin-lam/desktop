@@ -31,3 +31,10 @@ Lizenzmodelle, Abos, Projektgeschäft, Serviceverträge
 
 **10. Relevanz / Einsatzbereich:**  
 IT, SaaS, Industrie, Beratungs- und Serviceunternehmen  
+
+---
+
+## Verknüpfungen
+- **Zielgruppen:** [Unternehmen](../zielgruppen/unternehmen.md)
+- **Vertriebswege:** [Direktvertrieb](../vertriebswege/direktvertrieb.md), [Partnernetzwerke](../vertriebswege/partnernetzwerke.md), [Marktplatz / Plattform](../vertriebswege/marktplatz.md)
+- **Erlösmodelle:** [Lizenzmodell](../erloesmodelle/lizenz.md), [Pay-per-Use](../erloesmodelle/pay-per-use.md), [Abonnement](../erloesmodelle/abonnement.md), [Direktverkauf](../erloesmodelle/direktverkauf.md)

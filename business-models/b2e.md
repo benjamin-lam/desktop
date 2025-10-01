@@ -31,3 +31,10 @@ Interne Kostenverrechnung, Subvention, Zusatzleistungen
 
 **10. Relevanz / Einsatzbereich:**  
 Großunternehmen, Konzerne, Organisationen mit vielen Mitarbeitenden  
+
+---
+
+## Verknüpfungen
+- **Zielgruppen:** [Mitarbeitende](../zielgruppen/mitarbeitende.md)
+- **Vertriebswege:** [Mobile Apps](../vertriebswege/mobile-apps.md), Intranet/HR (intern), [Direktvertrieb](../vertriebswege/direktvertrieb.md)
+- **Erlösmodelle:** [Abonnement](../erloesmodelle/abonnement.md), [Direktverkauf](../erloesmodelle/direktverkauf.md)

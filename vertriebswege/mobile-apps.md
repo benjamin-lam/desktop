@@ -32,3 +32,10 @@ Abos, In-App-Käufe, Werbung.
 
 **10. Relevanz / Einsatzbereich:**  
 B2C, D2C, B2E.  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [B2C](../business-models/b2c.md), [D2C](../business-models/d2c.md), [B2E](../business-models/b2e.md), [G2C](../business-models/g2c.md)
+- **Zielgruppen:** [Endkund:innen](../zielgruppen/endkundinnen.md), [Mitarbeitende](../zielgruppen/mitarbeitende.md), [Bürger:innen](../zielgruppen/buergerinnen.md)
+- **Erlösmodelle:** [Abonnement](../erloesmodelle/abonnement.md), [Freemium](../erloesmodelle/freemium.md), [Werbung](../erloesmodelle/werbung.md)

@@ -31,3 +31,10 @@ Direktverkauf, Abo-Modelle, Bundles
 
 **10. Relevanz / Einsatzbereich:**  
 Lifestyle, Konsumgüter, E-Commerce  
+
+---
+
+## Verknüpfungen
+- **Zielgruppen:** [Endkund:innen](../zielgruppen/endkundinnen.md)
+- **Vertriebswege:** [Onlineshop](../vertriebswege/onlineshop.md), [Social Commerce](../vertriebswege/social-commerce.md), [Stationärer Handel](../vertriebswege/stationaer.md)
+- **Erlösmodelle:** [Direktverkauf](../erloesmodelle/direktverkauf.md), [Abonnement](../erloesmodelle/abonnement.md), [Cross-Selling & Upselling](../erloesmodelle/cross-selling.md)

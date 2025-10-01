@@ -37,3 +37,10 @@ E-Government-Portale, Apps, Service-Center
 
 **10. Relevanz im Modell:**  
 G2C, C2G  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [G2C](../business-models/g2c.md)
+- **Vertriebswege:** [Mobile Apps](../vertriebswege/mobile-apps.md)
+- **Erlösmodelle:** [Direktverkauf (Gebühren)](../erloesmodelle/direktverkauf.md)

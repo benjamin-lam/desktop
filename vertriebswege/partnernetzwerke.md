@@ -32,3 +32,10 @@ Provision, Margenbeteiligung, Lizenzgebühren.
 
 **10. Relevanz / Einsatzbereich:**  
 B2B, B2B2C, SaaS.  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [B2B](../business-models/b2b.md), [B2B2C](../business-models/b2b2c.md)
+- **Zielgruppen:** [Unternehmen](../zielgruppen/unternehmen.md)
+- **Erlösmodelle:** [Lizenz](../erloesmodelle/lizenz.md), [Provision](../erloesmodelle/provision.md), [Direktverkauf](../erloesmodelle/direktverkauf.md)

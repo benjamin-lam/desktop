@@ -31,3 +31,10 @@ Provision, Honorar, Lizenzierung
 
 **10. Relevanz / Einsatzbereich:**  
 Freelancing, Kreativwirtschaft, Plattformökonomie  
+
+---
+
+## Verknüpfungen
+- **Zielgruppen:** [Unternehmen](../zielgruppen/unternehmen.md), [Plattform-User:innen](../zielgruppen/plattform-user.md)
+- **Vertriebswege:** [Marktplatz / Plattform](../vertriebswege/marktplatz.md), [Direktvertrieb](../vertriebswege/direktvertrieb.md)
+- **Erlösmodelle:** [Provision](../erloesmodelle/provision.md), [Lizenzmodell](../erloesmodelle/lizenz.md), [Direktverkauf](../erloesmodelle/direktverkauf.md)

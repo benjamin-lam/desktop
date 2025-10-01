@@ -32,3 +32,10 @@ Einmalige oder wiederkehrende Lizenzgebühr.
 
 **10. Relevanz / Kombination:**  
 Kombinierbar mit Supportverträgen oder Abo.  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [B2B](../business-models/b2b.md), [B2G](../business-models/b2g.md)
+- **Zielgruppen:** [Unternehmen](../zielgruppen/unternehmen.md), [Behörden](../zielgruppen/behoerden.md)
+- **Vertriebswege:** [Direktvertrieb](../vertriebswege/direktvertrieb.md), [Partnernetzwerke](../vertriebswege/partnernetzwerke.md), [Ausschreibungsportale](../vertriebswege/ausschreibungsportale.md)

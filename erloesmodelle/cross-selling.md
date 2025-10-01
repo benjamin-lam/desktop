@@ -32,3 +32,10 @@ Ergänzende oder bessere Produkte werden gezielt beworben.
 
 **10. Relevanz / Kombination:**  
 Kombinierbar mit Direktverkauf, Abo, Freemium.  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [B2C](../business-models/b2c.md), [D2C](../business-models/d2c.md), [B2B](../business-models/b2b.md)
+- **Zielgruppen:** [Endkund:innen](../zielgruppen/endkundinnen.md), [Unternehmen](../zielgruppen/unternehmen.md)
+- **Vertriebswege:** [Onlineshop](../vertriebswege/onlineshop.md), [Stationär](../vertriebswege/stationaer.md), [Social Commerce](../vertriebswege/social-commerce.md)

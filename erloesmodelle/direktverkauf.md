@@ -33,3 +33,10 @@ Einmalige Zahlung pro Kauf.
 
 **10. Relevanz / Kombination:**  
 Universell in allen Geschäftsmodellen einsetzbar.  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [B2C](../business-models/b2c.md), [B2B](../business-models/b2b.md), [D2C](../business-models/d2c.md), [B2G](../business-models/b2g.md)
+- **Zielgruppen:** [Endkund:innen](../zielgruppen/endkundinnen.md), [Unternehmen](../zielgruppen/unternehmen.md), [Behörden](../zielgruppen/behoerden.md)
+- **Vertriebswege:** [Onlineshop](../vertriebswege/onlineshop.md), [Direktvertrieb](../vertriebswege/direktvertrieb.md), [Stationär](../vertriebswege/stationaer.md), [Ausschreibungsportale](../vertriebswege/ausschreibungsportale.md)

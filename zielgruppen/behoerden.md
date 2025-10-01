@@ -37,3 +37,10 @@ Ausschreibungsportale, Vergabeverfahren, Rahmenverträge
 
 **10. Relevanz im Modell:**  
 B2G, G2B, G2C  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [B2G](../business-models/b2g.md), [G2B](../business-models/g2b.md), [G2C](../business-models/g2c.md)
+- **Vertriebswege:** [Ausschreibungsportale](../vertriebswege/ausschreibungsportale.md), [Direktvertrieb](../vertriebswege/direktvertrieb.md)
+- **Erlösmodelle:** [Direktverkauf](../erloesmodelle/direktverkauf.md), [Lizenz](../erloesmodelle/lizenz.md)

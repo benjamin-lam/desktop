@@ -37,3 +37,10 @@ Onlineshops, Mobile Apps, Social Media, stationärer Handel
 
 **10. Relevanz im Modell:**  
 B2C, D2C, B2B2C, C2C  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [B2C](../business-models/b2c.md), [D2C](../business-models/d2c.md), [B2B2C](../business-models/b2b2c.md), [C2C](../business-models/c2c.md)
+- **Vertriebswege:** [Onlineshop](../vertriebswege/onlineshop.md), [Social Commerce](../vertriebswege/social-commerce.md), [Mobile Apps](../vertriebswege/mobile-apps.md), [Stationär](../vertriebswege/stationaer.md)
+- **Erlösmodelle:** [Direktverkauf](../erloesmodelle/direktverkauf.md), [Abonnement](../erloesmodelle/abonnement.md), [Werbung](../erloesmodelle/werbung.md), [Cross-Selling](../erloesmodelle/cross-selling.md)

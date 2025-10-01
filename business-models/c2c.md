@@ -31,3 +31,10 @@ Provisionen, Gebühren, Werbung
 
 **10. Relevanz / Einsatzbereich:**  
 Second-Hand-Markt, Sharing Economy, Dienstleistungen  
+
+---
+
+## Verknüpfungen
+- **Zielgruppen:** [Endkund:innen](../zielgruppen/endkundinnen.md), [Plattform-User:innen](../zielgruppen/plattform-user.md)
+- **Vertriebswege:** [Marktplatz / Plattform](../vertriebswege/marktplatz.md), [Mobile Apps](../vertriebswege/mobile-apps.md), [P2P: Plattform-Mechanik](../vertriebswege/marktplatz.md)
+- **Erlösmodelle:** [Provision](../erloesmodelle/provision.md), [Marktplatz-Gebühren](../erloesmodelle/marktplatz-gebuehren.md), [Werbung](../erloesmodelle/werbung.md)

@@ -32,3 +32,10 @@ Provision auf Umsatz oder Transaktion.
 
 **10. Relevanz / Kombination:**  
 Häufig bei Plattform- und Marktplatzmodellen.  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [C2C](../business-models/c2c.md), [B2B2C](../business-models/b2b2c.md), [P2P](../business-models/p2p.md), [C2B](../business-models/c2b.md)
+- **Zielgruppen:** [Plattform-User:innen](../zielgruppen/plattform-user.md), [Unternehmen](../zielgruppen/unternehmen.md), [Endkund:innen](../zielgruppen/endkundinnen.md)
+- **Vertriebswege:** [Marktplatz / Plattform](../vertriebswege/marktplatz.md), [Mobile Apps](../vertriebswege/mobile-apps.md)

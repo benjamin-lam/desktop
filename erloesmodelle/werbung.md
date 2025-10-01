@@ -32,3 +32,10 @@ Werbung wird nach Reichweite oder Klicks abgerechnet.
 
 **10. Relevanz / Kombination:**  
 Kombinierbar mit Freemium, Content, Plattformen.  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [B2C](../business-models/b2c.md), [C2C](../business-models/c2c.md), [P2P](../business-models/p2p.md)
+- **Zielgruppen:** [Endkund:innen](../zielgruppen/endkundinnen.md), [Plattform-User:innen](../zielgruppen/plattform-user.md)
+- **Vertriebswege:** [Social Commerce](../vertriebswege/social-commerce.md), [Marktplatz / Plattform](../vertriebswege/marktplatz.md), [Mobile Apps](../vertriebswege/mobile-apps.md)

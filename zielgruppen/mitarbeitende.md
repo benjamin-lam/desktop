@@ -37,3 +37,10 @@ Intranet, HR-Software, mobile Apps
 
 **10. Relevanz im Modell:**  
 B2E  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [B2E](../business-models/b2e.md)
+- **Vertriebswege:** [Mobile Apps](../vertriebswege/mobile-apps.md), Intranet/HR (intern)
+- **Erlösmodelle:** [Abonnement](../erloesmodelle/abonnement.md), [Direktverkauf](../erloesmodelle/direktverkauf.md)

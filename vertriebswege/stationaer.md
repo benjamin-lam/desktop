@@ -32,3 +32,10 @@ Direktverkauf, Servicepakete.
 
 **10. Relevanz / Einsatzbereich:**  
 B2C, D2C, teilweise B2B.  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [B2C](../business-models/b2c.md), [D2C](../business-models/d2c.md)
+- **Zielgruppen:** [Endkund:innen](../zielgruppen/endkundinnen.md)
+- **Erlösmodelle:** [Direktverkauf](../erloesmodelle/direktverkauf.md), [Cross-Selling](../erloesmodelle/cross-selling.md)

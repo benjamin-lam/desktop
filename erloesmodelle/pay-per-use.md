@@ -32,3 +32,10 @@ Abrechnung nach Verbrauchseinheiten (Zeit, Daten, Stückzahl).
 
 **10. Relevanz / Kombination:**  
 Kombinierbar mit Abo oder Direktverkauf.  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [B2B](../business-models/b2b.md)
+- **Zielgruppen:** [Unternehmen](../zielgruppen/unternehmen.md)
+- **Vertriebswege:** [Direktvertrieb](../vertriebswege/direktvertrieb.md), [Partnernetzwerke](../vertriebswege/partnernetzwerke.md)
