@@ -32,3 +32,10 @@ Direktverkauf, Abos, Serviceleistungen.
 
 **10. Relevanz / Einsatzbereich:**  
 D2C, B2B, B2E.  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [B2B](../business-models/b2b.md), [D2C](../business-models/d2c.md), [B2G](../business-models/b2g.md), [B2E](../business-models/b2e.md)
+- **Zielgruppen:** [Unternehmen](../zielgruppen/unternehmen.md), [Endkund:innen](../zielgruppen/endkundinnen.md), [Behörden](../zielgruppen/behoerden.md), [Mitarbeitende](../zielgruppen/mitarbeitende.md)
+- **Erlösmodelle:** [Direktverkauf](../erloesmodelle/direktverkauf.md), [Abonnement](../erloesmodelle/abonnement.md), [Lizenz](../erloesmodelle/lizenz.md)

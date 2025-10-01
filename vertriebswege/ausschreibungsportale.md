@@ -33,3 +33,10 @@ Projektgeschäft, Wartungsverträge, Lizenzmodelle.
 
 **10. Relevanz / Einsatzbereich:**  
 B2G, G2B.  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [B2G](../business-models/b2g.md), [G2B](../business-models/g2b.md)
+- **Zielgruppen:** [Behörden](../zielgruppen/behoerden.md), [Unternehmen](../zielgruppen/unternehmen.md)
+- **Erlösmodelle:** [Direktverkauf](../erloesmodelle/direktverkauf.md), [Lizenz](../erloesmodelle/lizenz.md)

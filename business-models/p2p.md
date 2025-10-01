@@ -31,3 +31,10 @@ Provisionen, Gebühren, Werbung
 
 **10. Relevanz / Einsatzbereich:**  
 Sharing Economy, FinTech, Mobilität, Wohnen  
+
+---
+
+## Verknüpfungen
+- **Zielgruppen:** [Plattform-User:innen](../zielgruppen/plattform-user.md), [Endkund:innen](../zielgruppen/endkundinnen.md)
+- **Vertriebswege:** [Marktplatz / Plattform](../vertriebswege/marktplatz.md), [Mobile Apps](../vertriebswege/mobile-apps.md)
+- **Erlösmodelle:** [Provision](../erloesmodelle/provision.md), [Marktplatz-Gebühren](../erloesmodelle/marktplatz-gebuehren.md), [Werbung](../erloesmodelle/werbung.md)

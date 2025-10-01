@@ -31,3 +31,10 @@ Gebühren, Steuern, staatliche Finanzierung
 
 **10. Relevanz / Einsatzbereich:**  
 E-Government, Verwaltung, öffentliche Services  
+
+---
+
+## Verknüpfungen
+- **Zielgruppen:** [Bürger:innen](../zielgruppen/buergerinnen.md)
+- **Vertriebswege:** [Mobile Apps](../vertriebswege/mobile-apps.md), [Direktvertrieb](../vertriebswege/direktvertrieb.md)
+- **Erlösmodelle:** [Direktverkauf (Gebühren)](../erloesmodelle/direktverkauf.md)

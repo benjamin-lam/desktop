@@ -32,3 +32,10 @@ Gebühren für Listung, Verkauf, Service oder Premium-Zugänge.
 
 **10. Relevanz / Kombination:**  
 Kombinierbar mit Provisionen und Werbung.  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [B2B2C](../business-models/b2b2c.md), [C2C](../business-models/c2c.md), [P2P](../business-models/p2p.md)
+- **Zielgruppen:** [Plattform-User:innen](../zielgruppen/plattform-user.md), [Endkund:innen](../zielgruppen/endkundinnen.md), [Unternehmen](../zielgruppen/unternehmen.md)
+- **Vertriebswege:** [Marktplatz / Plattform](../vertriebswege/marktplatz.md)

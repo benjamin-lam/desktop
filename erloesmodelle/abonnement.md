@@ -33,3 +33,10 @@ Monatliche/jährliche Zahlung für Zugang.
 
 **10. Relevanz / Kombination:**  
 Häufig kombiniert mit Freemium oder Werbung.  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [B2B](../business-models/b2b.md), [B2C](../business-models/b2c.md), [D2C](../business-models/d2c.md), [B2E](../business-models/b2e.md)
+- **Zielgruppen:** [Unternehmen](../zielgruppen/unternehmen.md), [Endkund:innen](../zielgruppen/endkundinnen.md), [Mitarbeitende](../zielgruppen/mitarbeitende.md)
+- **Vertriebswege:** [Onlineshop](../vertriebswege/onlineshop.md), [Mobile Apps](../vertriebswege/mobile-apps.md), [Direktvertrieb](../vertriebswege/direktvertrieb.md)

@@ -31,3 +31,10 @@ Gebühren, staatliche Finanzierung
 
 **10. Relevanz / Einsatzbereich:**  
 E-Government, Verwaltung, Vergabeverfahren  
+
+---
+
+## Verknüpfungen
+- **Zielgruppen:** [Unternehmen](../zielgruppen/unternehmen.md)
+- **Vertriebswege:** [Ausschreibungsportale](../vertriebswege/ausschreibungsportale.md)
+- **Erlösmodelle:** [Direktverkauf (Serviceentgelte/Gebühren)](../erloesmodelle/direktverkauf.md), [Lizenzmodell](../erloesmodelle/lizenz.md)

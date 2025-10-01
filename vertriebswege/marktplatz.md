@@ -34,3 +34,10 @@ Provisionen, Gebühren, Werbung.
 
 **10. Relevanz / Einsatzbereich:**  
 B2C, C2C, B2B2C.  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [C2C](../business-models/c2c.md), [B2B2C](../business-models/b2b2c.md), [P2P](../business-models/p2p.md)
+- **Zielgruppen:** [Plattform-User:innen](../zielgruppen/plattform-user.md), [Endkund:innen](../zielgruppen/endkundinnen.md), [Unternehmen](../zielgruppen/unternehmen.md)
+- **Erlösmodelle:** [Provision](../erloesmodelle/provision.md), [Marktplatz-Gebühren](../erloesmodelle/marktplatz-gebuehren.md), [Werbung](../erloesmodelle/werbung.md)

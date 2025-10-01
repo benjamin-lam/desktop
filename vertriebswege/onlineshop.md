@@ -34,3 +34,10 @@ Direktverkauf, Abos, Cross-Selling.
 
 **10. Relevanz / Einsatzbereich:**  
 B2C, D2C, B2B (teilweise).  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [B2C](../business-models/b2c.md), [D2C](../business-models/d2c.md), [B2B](../business-models/b2b.md)
+- **Zielgruppen:** [Endkund:innen](../zielgruppen/endkundinnen.md), [Unternehmen](../zielgruppen/unternehmen.md)
+- **Erlösmodelle:** [Direktverkauf](../erloesmodelle/direktverkauf.md), [Abonnement](../erloesmodelle/abonnement.md), [Cross-Selling](../erloesmodelle/cross-selling.md)

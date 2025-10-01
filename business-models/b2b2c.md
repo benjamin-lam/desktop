@@ -31,3 +31,10 @@ Provisionen, Abos, Gebühren
 
 **10. Relevanz / Einsatzbereich:**  
 E-Commerce, Plattformen, SaaS  
+
+---
+
+## Verknüpfungen
+- **Zielgruppen:** [Unternehmen](../zielgruppen/unternehmen.md), [Endkund:innen](../zielgruppen/endkundinnen.md)
+- **Vertriebswege:** [Partnernetzwerke](../vertriebswege/partnernetzwerke.md), [Marktplatz / Plattform](../vertriebswege/marktplatz.md)
+- **Erlösmodelle:** [Provision](../erloesmodelle/provision.md), [Marktplatz-Gebühren](../erloesmodelle/marktplatz-gebuehren.md), [Direktverkauf](../erloesmodelle/direktverkauf.md)

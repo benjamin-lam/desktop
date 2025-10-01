@@ -32,3 +32,10 @@ Direktverkauf, Affiliate, Influencer-Kooperationen.
 
 **10. Relevanz / Einsatzbereich:**  
 B2C, D2C, C2C.  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [B2C](../business-models/b2c.md), [D2C](../business-models/d2c.md), [C2C](../business-models/c2c.md)
+- **Zielgruppen:** [Endkund:innen](../zielgruppen/endkundinnen.md), [Plattform-User:innen](../zielgruppen/plattform-user.md)
+- **Erlösmodelle:** [Direktverkauf](../erloesmodelle/direktverkauf.md), [Werbung](../erloesmodelle/werbung.md), [Cross-Selling](../erloesmodelle/cross-selling.md)

@@ -32,3 +32,10 @@ Projektgeschäft, Wartungsverträge, Lizenzmodelle
 
 **10. Relevanz / Einsatzbereich:**  
 Öffentliche Verwaltung, Infrastruktur, Sicherheit, Bildung, Gesundheit  
+
+---
+
+## Verknüpfungen
+- **Zielgruppen:** [Behörden & staatliche Institutionen](../zielgruppen/behoerden.md)
+- **Vertriebswege:** [Ausschreibungsportale](../vertriebswege/ausschreibungsportale.md), [Direktvertrieb](../vertriebswege/direktvertrieb.md)
+- **Erlösmodelle:** [Direktverkauf](../erloesmodelle/direktverkauf.md), [Lizenzmodell](../erloesmodelle/lizenz.md), [Pay-per-Use](../erloesmodelle/pay-per-use.md)

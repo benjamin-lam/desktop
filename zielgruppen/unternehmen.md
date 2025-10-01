@@ -37,3 +37,10 @@ Direktvertrieb, Messen, B2B-Plattformen, Partnernetzwerke
 
 **10. Relevanz im Modell:**  
 B2B, B2B2C, G2B  
+
+---
+
+## Verknüpfungen
+- **Geschäftsmodelle:** [B2B](../business-models/b2b.md), [B2B2C](../business-models/b2b2c.md), [G2B](../business-models/g2b.md)
+- **Vertriebswege:** [Direktvertrieb](../vertriebswege/direktvertrieb.md), [Partnernetzwerke](../vertriebswege/partnernetzwerke.md), [Marktplatz](../vertriebswege/marktplatz.md)
+- **Erlösmodelle:** [Lizenz](../erloesmodelle/lizenz.md), [Pay-per-Use](../erloesmodelle/pay-per-use.md), [Abonnement](../erloesmodelle/abonnement.md), [Direktverkauf](../erloesmodelle/direktverkauf.md)
