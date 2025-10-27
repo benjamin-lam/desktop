@@ -1,166 +1,135 @@
-Danke für den Code ✌️
-
 Der Fehler 0x851A001A bei der SQL Server Installation bedeutet übersetzt:
-SQL Server konnte während des Setups nicht starten.
-Das Setup wartet darauf, dass die Datenbank-Engine hochkommt → sie startet nicht → Abbruch.
+SQL Server konnte während des Setups nicht starten.  
+Das Setup wartet darauf, dass die Datenbank-Engine hochkommt → sie startet nicht → Abbruch.  
 Microsoft nennt das intern:
 
-> "Wait on the Database Engine recovery handle failed." 
+> "Wait on the Database Engine recovery handle failed."
 
-
-
-In 2024/2025 gibt es dafür einen Hauptgrund, der extrem häufig ist – besonders auf neueren Windows-11-/NVMe-Laptops (Ryzen, aktuelle Notebooks etc.):
-
+In 2024/2025 gibt es dafür einen Hauptgrund, der extrem häufig ist – besonders auf neueren Windows‑11-/NVMe‑Laptops (Ryzen, aktuelle Notebooks etc.):
 
 ---
 
-Fall A (90% der Fälle auf neuen Laptops):
+## Fall A (≈90% der Fälle auf neuen Laptops)
 
-Dein Datenträger meldet eine "komische" Sektorgröße (>4 KB).
-SQL Server 2022 kann damit nicht umgehen und startet deshalb gar nicht. 
+Dein Datenträger meldet eine "komische" Sektorgröße (>4 KB).  
+SQL Server 2022 kann damit nicht umgehen und startet deshalb gar nicht.
 
 So checkst du in 1 Minute, ob genau das bei dir passiert:
 
-1. Öffne Eingabeaufforderung als Administrator
-
-Startmenü → cmd tippen → Rechtsklick → "Als Administrator ausführen"
-
-
+1. Öffne Eingabeaufforderung als Administrator  
+   Startmenü → `cmd` tippen → Rechtsklick → "Als Administrator ausführen"
 
 2. Führe aus (achte auf den richtigen Laufwerksbuchstaben, meist C:):
 
-
-
+```powershell
 fsutil fsinfo sectorinfo C:
+```
 
 3. Schau auf die Zeile
 PhysicalBytesPerSectorForAtomicity
 
-Wenn dort 4096 steht → alles gut, das ist 4 KB, dann ist wahrscheinlich NICHT dieses Problem.
+- Wenn dort `4096` steht → alles gut (4 KB), dann ist es wahrscheinlich NICHT dieses Problem.
+- Wenn dort etwas Größeres/Anderes steht (z. B. `16384` oder `131072` oder nicht `4096`) → dann hast du GENAU diesen Bug.
 
-Wenn dort etwas Größeres/Anderes steht (z. B. 16384 oder 131072 oder nicht 4096) → dann hast du GENAU diesen Bug.
+Warum kracht das?  
+Windows 11 + manche NVMe‑Treiber geben physische Sektorgrößen raus, die SQL Server nicht unterstützt.  
+SQL Server weigert sich dann zu starten, das Setup denkt "Engine defekt" → Fehler 0x851A001A.
 
-
-
-
-Warum kracht das?
-
-Windows 11 + manche NVMe-Treiber geben physische Sektorgrößen raus, die SQL Server nicht unterstützt.
-
-SQL Server weigert sich dann zu starten, das Setup denkt "Engine defekt" → Fehler 0x851A001A. 
-
-
-Fix für diesen Fall (Registry Workaround von Microsoft)
+### Fix für diesen Fall (Registry‑Workaround von Microsoft)
 
 Das zwingt Windows dazu, gegenüber SQL Server wieder so zu tun, als wären die Sektoren klassisch 4 KB.
 
-1. Wieder Admin-Eingabeaufforderung öffnen.
-
+1. Wieder Admin‑Eingabeaufforderung öffnen.
 
 2. Diesen Befehl ausführen (einzeilig!):
 
-
-
+```powershell
 REG ADD "HKLM\SYSTEM\CurrentControlSet\Services\stornvme\Parameters\Device" /v "ForcedPhysicalSectorSizeInBytes" /t REG_MULTI_SZ /d "* 4096" /f
+```
 
-⚠️ Manche Anleitungen zeigen 4095. Microsofts aktueller Workaround ist, die physische Sektorgröße effektiv auf 4096 Byte zu "emulieren", damit SQL Server startet. 
-(4095 vs. 4096 stammt aus unterschiedlichen Treiber-Generationen; beide Varianten zielen auf "tu so als 4 KB". Wenn 4096 später Ärger macht, nimm die Variante mit 4095. Das ist kein Tippfehler, das ist wirklich so in manchen NVMe-Treibern dokumentiert. )
+Hinweis: Manche Anleitungen zeigen `4095`. Microsofts aktueller Workaround ist, die physische Sektorgröße effektiv auf `4096` Byte zu "emulieren", damit SQL Server startet. (4095 vs. 4096 stammt aus unterschiedlichen Treiber‑Generationen; beide Varianten zielen auf "tu so als 4 KB". Wenn `4096` später Ärger macht, nimm die Variante mit `4095`.)
 
 3. PC neu starten.
 
-
 4. SQL Server Setup nochmal komplett neu starten (wieder als Admin).
-
-
 
 ➡️ Wenn DAS dein Problem war, läuft die Installation danach normalerweise sauber durch.
 
-
 ---
 
-Fall B (wenn dein fsutil sagt, alles ist 4096 → also Sektorgröße ok)
+## Fall B (wenn `fsutil` sagt, alles ist `4096` → also Sektorgröße ok)
 
 Dann schauen wir auf die zwei nächsthäufigen Ursachen:
 
-B1. Dienstkonto / Rechteproblem
+### B1. Dienstkonto / Rechteproblem
 
-SQL Server-Dienst startet nicht, weil das Konto (NT Service\MSSQL$DEINEINSTANZ) keine Rechte auf den Datenordner hat. Dann kommt derselbe Code 0x851A001A. 
+SQL Server‑Dienst startet nicht, weil das Konto (z. B. `NT Service\MSSQL$DEINEINSTANZ`) keine Rechte auf den Datenordner hat. Dann kommt derselbe Code `0x851A001A`.
 
 So prüfst du das:
 
 1. Öffne den Explorer und geh nach:
 
+```
 C:\Program Files\Microsoft SQL Server\
-
+```
 
 2. Such nach einem Ordner wie:
 
+```
 MSSQL16.SQLEXPRESS\MSSQL\LOG\
+```
 
-(Bei SQL 2022 Express ist MSSQL16... üblich. Bei dir kann der Name leicht abweichen.)
+(Bei SQL 2022 Express ist `MSSQL16...` üblich. Bei dir kann der Name leicht abweichen.)
 
-
-3. Öffne die Datei ERRORLOG (ohne Endung) in Editor.
-
-
+3. Öffne die Datei `ERRORLOG` (ohne Endung) im Editor.
 
 Wenn du da sowas findest wie:
 
-Access is denied
+- `Access is denied`
+- `Cannot open master database`
+- `The system cannot find the file specified`
 
-Cannot open master database
+→ Dann fehlen Rechte oder der Pfad zu `master.mdf`/`mastlog.ldf` ist ungültig.
 
-The system cannot find the file specified → Dann fehlen Rechte oder der Pfad zu master.mdf/mastlog.ldf ist ungültig. 
+Schnelllösung hier:  
+Bei der Installation unter "Server Configuration" das Dienstkonto NICHT auf irgendeinen Domänen-/Benutzeraccount legen, sondern fürs Erste `Lokales Systemkonto` / `NT AUTHORITY\SYSTEM` verwenden. Dann Setup erneut laufen lassen.
 
+### B2. Platte voll / kaputter alter SQL‑Server‑Rest
 
-Schnelllösung hier:
-
-Bei der Installation unter "Server Configuration" das Dienstkonto NICHT auf irgendeinen Domänen-/Benutzeraccount legen, sondern fürs Erste "Lokales Systemkonto" / NT AUTHORITY\SYSTEM verwenden.
-
-Dann Setup erneut laufen lassen.
-
-
-B2. Platte voll / kaputter alter SQL-Server-Rest
-
-Auch das erzeugt 0x851A001A.
+Auch das erzeugt `0x851A001A`.
 
 Kurzer Check:
 
+```powershell
 wmic logicaldisk get caption,freespace,size
+```
 
-Wenn C: fast voll ist (<2 GB frei), SQL startet nicht zuverlässig.
+- Wenn C: fast voll ist (< 2 GB frei), startet SQL Server nicht zuverlässig.
+- Wenn du schon einmal einen kaputten SQL‑Install drauf hattest, räum ihn vorher weg:
 
-Und: wenn du schon einmal einen kaputten SQL-Install drauf hattest, räum ihn vorher weg:
+  - In "Programme & Features" ALLES deinstallieren, was "Microsoft SQL Server ..." heißt.
+  - Danach diese Verzeichnisse (falls noch da) löschen:
 
-In "Programme & Features" ALLES deinstallieren, was Microsoft SQL Server ... heißt.
-
-Danach diese Verzeichnisse (falls noch da) löschen:
-
+```
 C:\Program Files\Microsoft SQL Server\
 C:\Program Files (x86)\Microsoft SQL Server\
 C:\ProgramData\Microsoft\SQL Server\
+```
 
-(C:\ProgramData ist versteckt.)
+(`C:\ProgramData` ist versteckt.)
 
-Neustart.
-
-Setup neu als Admin.
-
-
+- Neustart.
+- Setup neu als Admin.
 
 ---
 
-Was du jetzt konkret machen solltest
+## Was du jetzt konkret machen solltest
 
 1. Führ bitte genau den einen Check aus:
 
-
-
+```powershell
 fsutil fsinfo sectorinfo C:
+```
 
-2. Sag mir NUR die Zeile
-PhysicalBytesPerSectorForAtomicity = ...
-
-
-
-Dann weiß ich sofort, ob wir in Fall A (NVMe/Sektorgröße → Registry-Fix) oder Fall B (Rechte/Altinstallation) sind – und ich kann dir direkt den nächsten Befehl geben, ohne Rätselraten.
+2. Sag mir NUR die Zeile:
+PhysicalBytesPerSectorForAtomicity
