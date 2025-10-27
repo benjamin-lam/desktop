@@ -1,0 +1,261 @@
+🧭 Shopware Theme Overview Sheet
+
+🔹 1. Grundprinzip
+
+Ein Theme in Shopware erweitert oder ersetzt die Standard-Storefront.
+Es besteht aus Twig-Templates, SCSS, JS und einer theme.json, die alles verknüpft.
+
+👉 Themes = visuelle & strukturelle Ebene der Storefront
+
+
+---
+
+🔹 2. Verzeichnisstruktur
+
+custom/plugins/MyTheme/
+├── composer.json
+├── theme.json
+├── src/
+│   ├── Resources/
+│   │   ├── views/                  → Twig Templates (.twig)
+│   │   └── app/
+│   │       └── storefront/
+│   │           ├── src/scss/       → SCSS
+│   │           ├── src/js/         → JavaScript
+│   │           └── assets/         → Fonts, Icons, Images
+└── ...
+
+
+---
+
+🔹 3. Wichtigste Dateien
+
+🧩 composer.json
+
+Macht das Theme zu einem Shopware-Plugin.
+
+{
+  "name": "my/theme",
+  "type": "shopware-platform-plugin",
+  "autoload": {
+    "psr-4": { "My\\Theme\\": "src/" }
+  }
+}
+
+
+---
+
+🎨 theme.json
+
+Definiert Vererbung, SCSS/JS-Pfade, Konfigurationsfelder.
+
+{
+  "name": "MyTheme",
+  "author": "Benjamin Lam",
+  "viewInheritance": ["@Storefront"],
+  "parentTheme": "Storefront",
+  "style": [
+    "app/storefront/src/scss/base.scss"
+  ],
+  "script": [
+    "app/storefront/src/main.js"
+  ],
+  "asset": [
+    "app/storefront/src/assets"
+  ]
+}
+
+
+---
+
+🔹 4. Build-Kommandos
+
+Zweck	Befehl	Beschreibung
+
+Plugin registrieren	bin/console plugin:refresh	Aktualisiert Plugin-Liste
+Plugin aktivieren	bin/console plugin:install --activate MyTheme	Aktiviert Theme
+Theme registrieren	bin/console theme:refresh	Aktualisiert Theme-Liste
+Kompilieren	bin/console theme:compile	Baut CSS/JS neu
+Cache leeren	bin/console cache:clear	Entfernt alte Builds
+Admin-Build	bin/console build:administration	Baut JS/CSS für Admin
+
+
+
+---
+
+🔹 5. Template-Vererbung
+
+💡 Twig-Erweiterung
+
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+🪶 Override-Ordnerstruktur
+
+src/Resources/views/storefront/layout/header/logo.html.twig
+
+Tipp: Nur Dateien überschreiben, die du wirklich ändern musst.
+Immer <ThemeName> als Namespace im Template nutzen.
+
+
+---
+
+🔹 6. SCSS-Struktur
+
+⚙️ Beispiel base.scss
+
+// Variablen überschreiben
+$sw-color-brand-primary: #1e3a8a;
+
+// Standard-Styles importieren
+@import "~scss/variables";
+@import "~scss/base";
+
+// Eigene Anpassungen
+body {
+  background: #fafafa;
+}
+
+🔁 Kompilieren
+
+Nach jeder SCSS-Änderung:
+
+bin/console theme:compile
+
+
+---
+
+🔹 7. JavaScript-Struktur
+
+⚡ Beispiel main.js
+
+import Plugin from 'src/plugin-system/plugin.class';
+import PluginManager from 'src/plugin-system/plugin.manager';
+
+class HelloWorld extends Plugin {
+  init() {
+    console.log('Hello Shopware!');
+  }
+}
+
+PluginManager.register('HelloWorld', HelloWorld);
+
+Nach Änderungen:
+
+bin/console theme:compile
+
+
+---
+
+🔹 8. Assets (Fonts, Icons, Images)
+
+Pfad in theme.json:
+
+"asset": [
+  "app/storefront/src/assets"
+]
+
+Verwendung in Twig:
+
+<img src="{{ asset('storefront/assets/img/logo.svg') }}" alt="Logo">
+
+
+---
+
+🔹 9. Theme-Zuweisung im Admin
+
+> Admin → Verkaufskanäle → Storefront → Theme zuweisen
+
+
+
+Danach:
+
+bin/console theme:compile
+
+Wenn mehrere Themes installiert sind → nur eines pro Channel aktiv.
+
+
+---
+
+🔹 10. Debugging Essentials
+
+Bereich	Check
+
+Theme sichtbar?	`bin/console plugin:list
+Cache geleert?	bin/console cache:clear
+Styles greifen?	DevTools → theme-<hash>.css vorhanden
+Twig geladen?	Testkommentar im Template
+JS aktiv?	console.log() sichtbar
+Falscher Parent?	Prüfe parentTheme in theme.json
+Änderungen auf Prod?	Assets vor Deployment bauen (npm run production)
+
+
+
+---
+
+🔹 11. Typische Stolperfallen 🚧
+
+Problem	Ursache	Lösung
+
+Theme nicht erkannt	falscher Typ in composer.json	"type": "shopware-platform-plugin"
+SCSS ändert nichts	Cache / falsche Reihenfolge	theme:compile, SCSS nach Storefront laden
+Twig greift nicht	falscher Pfad / kein sw_extends	Struktur prüfen
+JS fehlt	kein main.js oder fehlendes register()	Registrieren & kompilieren
+CMS Block unsichtbar	Admin nicht rebuilt	build:administration
+Prod zeigt alte Dateien	kein Assets-Build im Deployment	theme:compile vor Upload
+
+
+
+---
+
+🔹 12. Best Practices
+
+✅ Versioniere alles (Git)
+✅ Keine Änderungen im Core (/vendor)
+✅ Themes modular halten (Styles, Components, JS trennen)
+✅ Dev-Modus für Tests (APP_ENV=dev)
+✅ Dokumentiere Overrides und Custom-Blöcke
+
+
+---
+
+🔹 13. Nützliche Tools
+
+Tool	Nutzen
+
+bin/console theme:dump	Zeigt Theme-Infos
+bin/console theme:change	Wechselt Theme pro Channel
+Symfony Profiler	Zeigt Twig-Vererbung
+Browser DevTools	CSS/JS-Analyse
+Docker/DDEV Logs	Watcher für Kompilierung
+
+
+
+---
+
+🔹 14. Quick Reference – Command Summary
+
+# Plugin registrieren
+bin/console plugin:refresh
+
+# Theme registrieren & aktivieren
+bin/console theme:refresh
+bin/console theme:change --all MyTheme
+
+# Kompilieren
+bin/console theme:compile
+
+# Cache löschen
+bin/console cache:clear
+
+
+---
+
+🔹 15. Ressourcen
+
+Shopware Docs – Themes
+
+Twig Blocks Reference
+
+Shopware Storefront GitHub
+
+SCSS Variablen Doku
