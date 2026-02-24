@@ -2,7 +2,7 @@
 # Desktop (Stand 2026)
 # Benjamin Lam (blame76)
 # Basis-Verzeichnis – hier können Sie den Namen bei Bedarf ändern
-BASE_DIR="."
+BASE_DIR="./volumes/repo/"
 
 echo "Erstelle Verzeichnisstruktur in '$BASE_DIR' ..."
 

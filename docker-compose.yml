@@ -1,0 +1,40 @@
+services:
+  chromadb:
+    image: chromadb/chroma:0.5.0
+    container_name: auto-sorter-chromadb
+    volumes:
+      - ./volumes/chromadb_data:/chroma/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+      - PERSIST_DIRECTORY=/chroma/chroma
+      - ANONYMIZED_TELEMETRY=False
+    restart: unless-stopped
+    networks:
+      - sorter-net
+
+  app:
+    build: ./app
+    container_name: auto-sorter-app
+    volumes:
+      - ./volumes/inbox:/inbox
+      - ./volumes/repo:/repo
+      - ./volumes/hf_cache:/root/.cache/huggingface
+    env_file:
+      - .env
+    environment:
+      - CHROMA_HOST=chromadb
+      - CHROMA_PORT=8000
+      - INBOX_PATH=/inbox
+      - REPO_PATH=/repo
+      - PYTHONUNBUFFERED=1
+      - HF_HOME=/root/.cache/huggingface
+    depends_on:
+      - chromadb
+    networks:
+      - sorter-net
+    stdin_open: true
+    tty: true
+
+networks:
+  sorter-net:
+    driver: bridge

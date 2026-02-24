@@ -7,7 +7,7 @@ set -e  # Skript abbrechen, wenn ein Befehl fehlschlägt
 # ============================================
 # Konfiguration
 # ============================================
-BASE_DIR="."
+BASE_DIR="./volumes/repo/"
 
 # ============================================
 # Funktionen zur Rückgabe des README-Inhalts
