@@ -15,4 +15,6 @@ chmod 755 volumes/hf_cache
 
 # Docker Compose starten
 docker-compose up -d chromadb
+echo "Warte auf ChromaDB..."
+sleep 3
 docker-compose run --rm app
