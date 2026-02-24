@@ -34,10 +34,18 @@ Alles lokal, alles sicher, keine Cloud-Heinis, die in deinen Sachen rumschnüffe
 4. Die `inbox` bleibt erstmal leer, wie mein Magen vor dem Frühstück! 🧁
 
 4. **ABFAHRT!**  
+
+Beispiel:
+   ```bash
+   struktur_erstellen.sh
+   struktur_mit_readmes.sh
+   ```
    Terminal auf im `auto-sorter` Verzeichnis und dann:
    ```bash
-   docker-compose up -d chromadb
-   docker-compose up app
+    docker-compose up -d chromadb
+    echo "Warte auf ChromaDB..."
+    sleep 3
+    docker-compose run --rm app
    ```
 Geduld, Schätzchen! Beim ersten Mal lädt er das Modell (ca. 500 MB). Trink 'nen Tee, während die Bits fließen.
 🎮 Nutzung: So wird's gemacht!
