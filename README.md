@@ -1,6 +1,6 @@
 # 🧨 Auto Sorter – Ordnung mit WUMMS und Köpfchen! 🧠💥
 
-Willkommen in der Zukunft, Schätzchen! Dein `repo`-Ordner sieht aus wie ein Schlachtfeld? Keine Sorge, Tina hilft dir! Dieses System ist wie ein treuer Minion: Es starrt ununterbrochen auf deinen **Inbox-Ordner**, schnappt sich alles, was da landet, und sagt dir genau, in welche Schublade der Kram gehört. Semantische Ähnlichkeit, Baby! Das Teil lernt aus deinen Korrekturen – je mehr du sortierst, desto schlauer wird die Kiste!
+Willkommen in der Zukunft, Schätzchen! Dein `repo`-Ordner sieht aus wie ein Schlachtfeld? Keine Sorge, ich helfe dir! Dieses System ist wie ein treuer Minion: Es starrt ununterbrochen auf deinen **Inbox-Ordner**, schnappt sich alles, was da landet, und sagt dir genau, in welche Schublade der Kram gehört. Semantische Ähnlichkeit, Baby! Das Teil lernt aus deinen Korrekturen – je mehr du sortierst, desto schlauer wird die Kiste!
 
 Alles lokal, alles sicher, keine Cloud-Heinis, die in deinen Sachen rumschnüffeln. Nur du, dein Rechner und eine Menge Magie! ✨
 
