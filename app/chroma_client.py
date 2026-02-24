@@ -5,13 +5,6 @@ from typing import List, Dict, Optional
 
 logger = logging.getLogger(__name__)
 
-import chromadb
-from chromadb.config import Settings
-import logging
-from typing import List, Dict, Optional
-
-logger = logging.getLogger(__name__)
-
 class ChromaClient:
     def __init__(self, host: str, port: int, collection_name: str):
         self.client = chromadb.HttpClient(

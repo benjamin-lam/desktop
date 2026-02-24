@@ -14,7 +14,10 @@ def get_file_hash(filepath: Path) -> str:
 
 def safe_path(base: Path, user_path: str) -> Path:
     """Stellt sicher, dass ein Pfad innerhalb von base liegt."""
+    base = base.resolve()
     full = (base / user_path).resolve()
-    if not str(full).startswith(str(base.resolve())):
+    try:
+        full.relative_to(base)
+    except ValueError:
         raise ValueError("Pfad außerhalb des erlaubten Bereichs")
     return full

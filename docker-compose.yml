@@ -18,7 +18,7 @@ services:
     volumes:
       - ./volumes/inbox:/inbox
       - ./volumes/repo:/repo
-      - ./volumes/hf_cache:/root/.cache/huggingface
+      - ./volumes/hf_cache:/home/sorter/.cache/huggingface
     env_file:
       - .env
     environment:
@@ -27,7 +27,7 @@ services:
       - INBOX_PATH=/inbox
       - REPO_PATH=/repo
       - PYTHONUNBUFFERED=1
-      - HF_HOME=/root/.cache/huggingface
+      - HF_HOME=/home/sorter/.cache/huggingface
     depends_on:
       - chromadb
     networks:

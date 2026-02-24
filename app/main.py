@@ -40,12 +40,11 @@ embedder = Embedder(MODEL_NAME)
 
 # Retry für ChromaDB
 max_retries = 30
-retry_interval = 3  # etwas länger
+retry_interval = 3
 chroma = None
 for attempt in range(max_retries):
     try:
         chroma = ChromaClient(CHROMA_HOST, CHROMA_PORT, COLLECTION_NAME)
-        # Test-Query: Anzahl der Dokumente abrufen
         count = chroma.collection.count()
         logger.info(f"Verbindung zu ChromaDB hergestellt. {count} Dokumente in Collection.")
         break
@@ -59,7 +58,6 @@ for attempt in range(max_retries):
 
 # Initialisierung: READMEs aus dem Repo einlesen und als Trainingsdaten speichern
 def init_repo_readmes():
-
     """Durchsucht REPO_PATH nach README.md Dateien und speichert sie in ChromaDB."""
     logger.info("Initialisiere Datenbank mit READMEs aus dem Repo...")
     count = 0
@@ -74,7 +72,7 @@ def init_repo_readmes():
                 doc_id=doc_id,
                 embedding=emb,
                 metadata={"ordner": folder, "quelle": "readme", "pfad": str(readme_path)},
-                document=text[:1000]  # nur ein Ausschnitt für Debug
+                document=text[:1000]
             )
             count += 1
     logger.info(f"{count} READMEs in die Datenbank geladen.")
@@ -95,16 +93,16 @@ class InboxHandler(FileSystemEventHandler):
     def process_file(self, filepath: Path):
         # Nur bestimmte Dateitypen verarbeiten
         if filepath.suffix.lower() not in ['.pdf', '.docx', '.txt', '.md', '.markdown', '.html', '.htm']:
-            logger.info(f"Ignoriere {filepath}: nicht unterstützter Typ")
+            logger.info(f"Ignoriere {filepath.name}: nicht unterstützter Typ")
             return
 
         # Warte kurz, falls Datei noch geschrieben wird
         time.sleep(1)
 
-        logger.info(f"Neue Datei erkannt: {filepath}")
+        logger.info(f"Neue Datei erkannt: {filepath.name}")
         text = extract_text(filepath)
         if not text.strip():
-            logger.warning(f"Kein Text extrahierbar aus {filepath}")
+            logger.warning(f"Kein Text extrahierbar aus {filepath.name}")
             return
 
         # Embedding erzeugen
@@ -155,6 +153,10 @@ class InboxHandler(FileSystemEventHandler):
                     break
                 else:
                     print("Kein Vorschlag vorhanden. Bitte Pfad eingeben.")
+            elif not antwort:
+                # FIX 1: Leerstring-Prüfung
+                print("Leere Eingabe nicht erlaubt. Bitte erneut eingeben.")
+                continue
             elif antwort.startswith('/') or antwort[0].isalnum():
                 # Benutzer hat einen Pfad eingegeben (relativ zu REPO_PATH)
                 ziel_ordner = antwort
@@ -167,14 +169,24 @@ class InboxHandler(FileSystemEventHandler):
                 return
             elif antwort == 'i':
                 print("\n--- Dateiinhalt (Auszug) ---")
-                print(text[:1000])
+                # Filtere Steuerzeichen für sichere Ausgabe
+                import re
+                safe_text = re.sub(r'[^\x20-\x7E\n\t]', '', text[:1000])
+                print(safe_text)
                 print("----------------------------\n")
             else:
                 print("Ungültige Eingabe.")
 
         # ===== Datei verschieben/kopieren =====
-        # Zielverzeichnis bestimmen
-        ziel_ordner_path = utils.safe_path(REPO_PATH, ziel_ordner)
+        # FIX 2: Try/Except um safe_path()
+        try:
+            ziel_ordner_path = utils.safe_path(REPO_PATH, ziel_ordner)
+        except ValueError as e:
+            logger.error(f"Ungültiger Pfad '{ziel_ordner}': {e}")
+            print(f"❌ FEHLER: {e}")
+            print("Die Datei bleibt in der Inbox. Bitte erneut verarbeiten.")
+            return
+
         ziel_ordner_path.mkdir(parents=True, exist_ok=True)
         ziel_datei = ziel_ordner_path / filepath.name
         # Doppelte vermeiden: falls schon vorhanden, Namen ergänzen
@@ -186,8 +198,13 @@ class InboxHandler(FileSystemEventHandler):
             counter += 1
 
         # 1. Datei ins Ziel kopieren
-        shutil.copy2(str(filepath), str(ziel_datei))
-        logger.info(f"Datei kopiert nach: {ziel_datei}")
+        try:
+            shutil.copy2(str(filepath), str(ziel_datei))
+            logger.info(f"Datei kopiert nach: {ziel_datei.relative_to(REPO_PATH)}")
+        except OSError as e:
+            logger.error(f"Fehler beim Kopieren von {filepath.name}: {e}")
+            print(f"❌ FEHLER beim Kopieren: {e}")
+            return
 
         # 2. Original in der Inbox in "processed" verschieben (statt löschen)
         processed_dir = INBOX_PATH / "processed"
@@ -200,18 +217,30 @@ class InboxHandler(FileSystemEventHandler):
             processed_file = processed_dir / f"{stem}_{counter}{suffix}"
             counter += 1
 
-        filepath.rename(processed_file)
-        logger.info(f"Original in Inbox verschoben nach: {processed_file}")
+        try:
+            filepath.rename(processed_file)
+            logger.info(f"Original in Inbox verschoben nach: {processed_file.relative_to(INBOX_PATH)}")
+        except OSError as e:
+            logger.error(f"Fehler beim Verschieben von {filepath.name}: {e}")
+            print(f"⚠️  WARNUNG: Datei wurde kopiert, aber Original konnte nicht verschoben werden: {e}")
 
         # Lerneffekt: Embedding + korrekten Ordner in DB speichern
-        doc_id = f"doc_{utils.get_file_hash(ziel_datei)}"
-        chroma.add_document(
-            doc_id=doc_id,
-            embedding=emb,
-            metadata={"ordner": ziel_ordner, "quelle": "user_corrected", "pfad": str(ziel_datei)},
-            document=text[:1000]
-        )
-        logger.info("Lerneintrag in ChromaDB gespeichert.")
+        # FIX 3: Timestamp für eindeutige doc_id
+        import re
+        safe_ordner = re.sub(r'[^a-zA-Z0-9_/.-]', '_', ziel_ordner)
+        doc_id = f"doc_{utils.get_file_hash(ziel_datei)}_{int(time.time())}"
+
+        try:
+            chroma.add_document(
+                doc_id=doc_id,
+                embedding=emb,
+                metadata={"ordner": safe_ordner, "quelle": "user_corrected", "pfad": str(ziel_datei.relative_to(REPO_PATH))},
+                document=text[:1000]
+            )
+            logger.info("Lerneintrag in ChromaDB gespeichert.")
+        except Exception as e:
+            logger.error(f"Fehler beim Speichern in ChromaDB: {e}")
+            print(f"⚠️  WARNUNG: Datei wurde verschoben, aber Lerneintrag konnte nicht gespeichert werden.")
 
 # ===== Hauptschleife =====
 def main():

@@ -8,10 +8,10 @@ mkdir -p volumes/chromadb_data
 mkdir -p volumes/hf_cache
 
 # Dem Container erlauben, darauf zu schreiben (777)
-chmod 777 volumes/inbox
-chmod 777 volumes/repo
-chmod 777 volumes/chromadb_data
-chmod 777 volumes/hf_cache
+chmod 755 volumes/inbox
+chmod 755 volumes/repo
+chmod 755 volumes/chromadb_data
+chmod 755 volumes/hf_cache
 
 # Docker Compose starten
 docker-compose up -d chromadb
