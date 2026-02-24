@@ -63,7 +63,7 @@ Schmeiß eine Datei in volumes/inbox. Boom! In der Konsole geht's rund. Du hast 
 | :--- | :--- | :--- |
 | **MODEL_NAME** | Das KI-Gehirn | `paraphrase-multilingual-MiniLM-L12-v2` |
 | **SIMILARITY_THRESHOLD** | Wie streng? (0..1) – Kleiner ist pingeliger! | `0.6` |
-| **SCAN_INTERVAL** | Sekunden, bis Tina wieder in die Inbox linst | `5` |
+| **SCAN_INTERVAL** | Sekunden, bis es wieder in die Inbox linst | `5` |
 
 🧠 Wie lernt das Teil?
 Das System liest deine vorhandenen READMEs und speichert sie als Goldstandard. 
