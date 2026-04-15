@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- Beispielcode – nicht produktiv einsetzen. -->
+<acl xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <resources>
+        <resource id="Magento_Backend::admin">
+            <resource id="Blame76_AdminShareLinks::root" title="Admin Share Links" sortOrder="999">
+                <resource id="Blame76_AdminShareLinks::generator" title="Generator" sortOrder="10"/>
+                <resource id="Blame76_AdminShareLinks::redirect" title="Redirect Endpoint" sortOrder="20"/>
+            </resource>
+        </resource>
+    </resources>
+</acl>

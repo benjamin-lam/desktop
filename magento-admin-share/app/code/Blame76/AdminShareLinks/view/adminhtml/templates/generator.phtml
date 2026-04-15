@@ -1,0 +1,134 @@
+<?php
+/**
+ * @var \Blame76\AdminShareLinks\Block\Adminhtml\Generator $block
+ */
+$types = $block->getSupportedTypes();
+$shareBaseUrl = $block->getShareBaseUrl();
+?>
+<div class="admin__page-section">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Persistent Admin Share Links')) ?></span>
+    </div>
+
+    <div class="admin__page-section-content">
+        <p>
+            <?= $block->escapeHtml(__('Generate stable backend links for supported entity types.')) ?>
+        </p>
+        <p>
+            <?= $block->escapeHtml(__('These links intentionally avoid reusing foreign session-specific parameters such as secret keys or form keys.')) ?>
+        </p>
+
+        <div class="admin__field field">
+            <label class="admin__field-label" for="blame76-share-type">
+                <span><?= $block->escapeHtml(__('Target Type')) ?></span>
+            </label>
+            <div class="admin__field-control">
+                <select id="blame76-share-type" class="admin__control-select">
+                    <?php foreach ($types as $typeCode => $typeLabel): ?>
+                        <option value="<?= $block->escapeHtmlAttr($typeCode) ?>">
+                            <?= $block->escapeHtml($typeLabel) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+
+        <div class="admin__field field">
+            <label class="admin__field-label" for="blame76-share-id">
+                <span><?= $block->escapeHtml(__('Entity ID')) ?></span>
+            </label>
+            <div class="admin__field-control">
+                <input type="number"
+                       min="1"
+                       id="blame76-share-id"
+                       class="admin__control-text"
+                       placeholder="123" />
+            </div>
+        </div>
+
+        <div class="admin__field field">
+            <label class="admin__field-label" for="blame76-share-url">
+                <span><?= $block->escapeHtml(__('Generated Share URL')) ?></span>
+            </label>
+            <div class="admin__field-control">
+                <input type="text"
+                       id="blame76-share-url"
+                       class="admin__control-text"
+                       readonly="readonly"
+                       value="<?= $block->escapeHtmlAttr($block->getExampleUrl()) ?>" />
+            </div>
+        </div>
+
+        <div class="admin__page-section-item-actions">
+            <button type="button" class="action-default scalable" id="blame76-generate-url">
+                <span><?= $block->escapeHtml(__('Generate URL')) ?></span>
+            </button>
+
+            <button type="button" class="action-primary scalable" id="blame76-copy-url">
+                <span><?= $block->escapeHtml(__('Copy URL')) ?></span>
+            </button>
+
+            <a href="<?= $block->escapeUrl($block->getExampleUrl()) ?>"
+               target="_blank"
+               class="action-secondary scalable"
+               id="blame76-open-url">
+                <span><?= $block->escapeHtml(__('Open URL')) ?></span>
+            </a>
+        </div>
+
+        <hr style="margin: 20px 0;">
+
+        <div class="message message-notice">
+            <div>
+                <strong><?= $block->escapeHtml(__('Example:')) ?></strong>
+                <code><?= $block->escapeHtml($block->getExampleUrl()) ?></code>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+require(['jquery'], function ($) {
+    'use strict';
+
+    var baseUrl = '<?= $block->escapeJsQuote($shareBaseUrl) ?>';
+
+    function buildUrl() {
+        var type = $('#blame76-share-type').val();
+        var id = $('#blame76-share-id').val();
+
+        if (!id || parseInt(id, 10) <= 0) {
+            return '';
+        }
+
+        return baseUrl + 'type/' + encodeURIComponent(type) + '/id/' + encodeURIComponent(id) + '/';
+    }
+
+    function refresh() {
+        var url = buildUrl();
+        $('#blame76-share-url').val(url);
+        $('#blame76-open-url').attr('href', url || '#');
+    }
+
+    $('#blame76-generate-url').on('click', refresh);
+    $('#blame76-share-type, #blame76-share-id').on('change keyup', refresh);
+
+    $('#blame76-copy-url').on('click', function () {
+        var $input = $('#blame76-share-url');
+        var value = $input.val();
+
+        if (!value) {
+            alert('Please generate a valid URL first.');
+            return;
+        }
+
+        $input.trigger('focus').trigger('select');
+
+        try {
+            document.execCommand('copy');
+        } catch (e) {
+            console.warn('Copy failed', e);
+        }
+    });
+});
+</script>

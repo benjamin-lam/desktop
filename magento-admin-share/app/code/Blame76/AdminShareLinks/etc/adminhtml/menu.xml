@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- Beispielcode – nicht produktiv einsetzen. -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Blame76_AdminShareLinks::generator"
+             title="Admin Share Links"
+             module="Blame76_AdminShareLinks"
+             sortOrder="999"
+             parent="Magento_Backend::system"
+             action="blame76share/index/index"
+             resource="Blame76_AdminShareLinks::generator"/>
+    </menu>
+</config>
